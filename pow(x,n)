@@ -1,15 +1,11 @@
 public static double pow(double x, int n) {
-        if (n == 0) {
+         if (n == 0) {
             return 1;
         }
-        boolean flag = false;
-        if (n < 0) {
-            n = n * -1;
-            flag = true;
-        }
+        
         int exp = n;
         long count = 1;
-        while (exp > 0) {
+        while (exp != 0) {
             count = count * 2;
             exp = exp / 2;
         }
@@ -21,14 +17,14 @@ public static double pow(double x, int n) {
             if (temp % 2 == 0) {
                 product = product * product;
             } else {
+                if(n>0)
                 product = product * product * x;
+                else
+                {
+                    product=product*product *(1/x);
+                }
             }
         }
 
-        if (flag == true) {
-            return 1 / product;
-        } else {
-            return product;
-        }
-
+       return product;
     }
